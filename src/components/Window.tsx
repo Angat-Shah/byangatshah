@@ -14,7 +14,7 @@ interface WindowProps {
   onMove: (x: number, y: number) => void;
 }
 
-// Draggable floating window base
+// Draggable floating window with z-index stacking
 export const Window: React.FC<WindowProps> = ({
   app,
   win,
