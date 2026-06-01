@@ -14,7 +14,7 @@ interface WindowProps {
   onMove: (x: number, y: number) => void;
 }
 
-// Draggable floating window with z-index stacking
+// macOS traffic light controls: close, minimize, zoom
 export const Window: React.FC<WindowProps> = ({
   app,
   win,
