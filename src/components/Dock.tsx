@@ -1,3 +1,4 @@
+// active status dots and tooltips
 import React, { useRef } from 'react';
 import type { AppId, SocialLink } from '../../types/os';
 import { IconSquircleImage, IconSquircleGradient } from '../ui/UIElements';
