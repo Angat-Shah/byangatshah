@@ -14,7 +14,7 @@ interface WindowProps {
   onMove: (x: number, y: number) => void;
 }
 
-// macOS traffic light controls: close, minimize, zoom
+// macOS traffic light controls + viewport edge clamp on small screens
 export const Window: React.FC<WindowProps> = ({
   app,
   win,
