@@ -5,6 +5,7 @@ import { Window } from './components/Window';
 export const App: React.FC = () => {
   const [windows, setWindows] = useState<Record<string, WindowState>>({});
   const [isUnlocked, setIsUnlocked] = useState(false);
+  // Autoplay music upon unlock flow completion
   const topZIndexRef = useRef<number>(100);
 
   const bringToFront = useCallback((id: string) => {
