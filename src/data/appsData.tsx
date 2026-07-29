@@ -15,3 +15,5 @@ export const createAppsData = (): AppDefinition[] => [
 export const APPS_DATA = createAppsData();
 
 // About Angat profile view added
+
+// Studies view: Atheno, XAI agreement, QRNG inquiries
