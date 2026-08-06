@@ -17,3 +17,5 @@ export const APPS_DATA = createAppsData();
 // About Angat profile view added
 
 // Studies view: Atheno, XAI agreement, QRNG inquiries
+
+// Skills folders categorized stacks
