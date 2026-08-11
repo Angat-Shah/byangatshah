@@ -19,3 +19,5 @@ export const APPS_DATA = createAppsData();
 // Studies view: Atheno, XAI agreement, QRNG inquiries
 
 // Skills folders categorized stacks
+
+// Experience view: Capabl, Popway, Soomuch
