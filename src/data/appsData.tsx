@@ -21,3 +21,5 @@ export const APPS_DATA = createAppsData();
 // Skills folders categorized stacks
 
 // Experience view: Capabl, Popway, Soomuch
+
+// Community batch 1: Amazon ML, SSIP Idea Hunt, Swirl & Twirl
