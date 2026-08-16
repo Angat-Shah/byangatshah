@@ -23,3 +23,5 @@ export const APPS_DATA = createAppsData();
 // Experience view: Capabl, Popway, Soomuch
 
 // Community batch 1: Amazon ML, SSIP Idea Hunt, Swirl & Twirl
+
+// Community batch 2: NSS leadership, Pravaah coordination
