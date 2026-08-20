@@ -25,3 +25,5 @@ export const APPS_DATA = createAppsData();
 // Community batch 1: Amazon ML, SSIP Idea Hunt, Swirl & Twirl
 
 // Community batch 2: NSS leadership, Pravaah coordination
+
+// Contact view with direct email & LinkedIn actions
