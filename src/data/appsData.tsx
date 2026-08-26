@@ -27,3 +27,5 @@ export const APPS_DATA = createAppsData();
 // Community batch 2: NSS leadership, Pravaah coordination
 
 // Contact view with direct email & LinkedIn actions
+
+// Eikone gallery view wired with 9 photographs
