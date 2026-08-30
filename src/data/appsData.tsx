@@ -29,3 +29,5 @@ export const APPS_DATA = createAppsData();
 // Contact view with direct email & LinkedIn actions
 
 // Eikone gallery view wired with 9 photographs
+
+// Resume preview view wired
