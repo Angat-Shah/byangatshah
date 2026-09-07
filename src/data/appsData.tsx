@@ -31,3 +31,5 @@ export const APPS_DATA = createAppsData();
 // Eikone gallery view wired with 9 photographs
 
 // Resume preview view wired
+
+// Projects grid and 3D cylindrical carousel
