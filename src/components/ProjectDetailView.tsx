@@ -320,3 +320,5 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({ projectId 
   );
 };
 
+
+// Author remaining 4 briefings: StackIt, ChronoSched, STAFFI, STUDIO
