@@ -33,3 +33,5 @@ export const APPS_DATA = createAppsData();
 // Resume preview view wired
 
 // Projects grid and 3D cylindrical carousel
+
+// Gaming archive ribbon wired
