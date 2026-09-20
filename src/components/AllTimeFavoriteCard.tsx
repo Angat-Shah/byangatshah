@@ -235,7 +235,7 @@ export const SquadUpModal: React.FC<SquadUpModalProps> = ({ isOpen, onClose }) =
   useEffect(() => {
     if (!isOpen) return;
     const prevOverflow = document.body.style.overflow;
-    // BGMI player stats card;
+    // Squad-up modal with FuseButton submit;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
