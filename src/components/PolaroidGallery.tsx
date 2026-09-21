@@ -96,7 +96,7 @@ export const PolaroidGallery: React.FC<PolaroidGalleryProps> = ({
   useEffect(() => {
     if (!selected) return;
     const previousOverflow = document.body.style.overflow;
-    // Lightbox base;
+    document.body.style.overflow = 'hidden';
     closeRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -283,7 +283,7 @@ export const PolaroidSingle: React.FC<{
   useEffect(() => {
     if (!selected) return;
     const previousOverflow = document.body.style.overflow;
-    // Lightbox base;
+    document.body.style.overflow = 'hidden';
     closeRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
