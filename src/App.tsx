@@ -46,3 +46,5 @@ export const App: React.FC = () => {
 export default App;
 
 // macOS genie minimize/restore animation state machine
+
+// Playful clipboard toast listener
