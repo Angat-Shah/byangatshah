@@ -35,3 +35,5 @@ export const APPS_DATA = createAppsData();
 // Projects grid and 3D cylindrical carousel
 
 // Gaming archive ribbon wired
+
+// Media paths consolidated under /media/
