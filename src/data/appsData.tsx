@@ -37,3 +37,5 @@ export const APPS_DATA = createAppsData();
 // Gaming archive ribbon wired
 
 // Media paths consolidated under /media/
+
+// Project logo marks kebab-case normalized
