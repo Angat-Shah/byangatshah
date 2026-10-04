@@ -235,7 +235,7 @@ export const SquadUpModal: React.FC<SquadUpModalProps> = ({ isOpen, onClose }) =
   useEffect(() => {
     if (!isOpen) return;
     const prevOverflow = document.body.style.overflow;
-    // Background scroll lock on modal open;
+    document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();

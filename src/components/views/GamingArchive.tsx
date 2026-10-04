@@ -412,5 +412,3 @@ export const GamingArchive: React.FC = () => {
     </section>
   );
 };
-
-// Wired BGMI AllTimeFavoriteCard into archive

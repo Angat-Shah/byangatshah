@@ -1,4 +1,3 @@
-// Dock refactored onto shared UIElements primitives
 import React, { useRef } from 'react';
 import type { AppId, SocialLink } from '../../types/os';
 import { IconSquircleImage, IconSquircleGradient } from '../ui/UIElements';
