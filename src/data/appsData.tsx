@@ -989,3 +989,4 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
 
 export const APPS_DATA = createAppsData();
     
+// Purged dead alias app exports and tightened AppId union
