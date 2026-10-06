@@ -748,7 +748,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({ onOpenProject }) => 
       <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
         <ActionButton
           href="https://github.com/Angat-Shah?tab=repositories"
-          className="justify-between"
+          className="w-full justify-between"
         >
           View All Projects on GitHub
         </ActionButton>
@@ -989,4 +989,3 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
 
 export const APPS_DATA = createAppsData();
     
-// Purged dead alias app exports and tightened AppId union
