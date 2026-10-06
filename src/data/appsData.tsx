@@ -555,7 +555,7 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     id: 'nss',
     title: 'NSS CORE LEADERSHIP',
     subtitle: 'Leadership · National Service Scheme',
-    year: 'Jun 2023 - Jun 2025',
+    year: 'Jun 2023 – Jun 2025',
     image: '/media/nss-certificate.png',
     desc: 'Served two consecutive years on the NSS departmental core team, coordinating activities and a 180–200 member volunteer unit across health drives, competitions, and community programs.'
   },
