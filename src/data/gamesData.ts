@@ -23,7 +23,7 @@ export const GAMES_DATA: GameItem[] = [
   { id: 'lego-batman3', title: 'LEGO Batman 3: Beyond Gotham', platform: 'Console', cover: '/games/lego-batman3.jpg' },
   { id: 'batman-telltale', title: 'Batman: The Telltale Series', platform: 'Console', cover: '/games/batman-telltale.jpg' },
   { id: 'hitman2', title: 'Hitman 2', platform: 'Console', cover: '/games/hitman2.jpg' },
-  { id: 'f1-24', title: 'F1 24', platform: 'Console', cover: '/games/f1-25.jpg' },
+  { id: 'f1-24', title: 'F1 24', platform: 'Console', cover: '/games/f1-24.jpg' },
 
   // PSP (3)
   { id: 'mk-psp', title: 'Mortal Kombat: Deception', platform: 'PSP', cover: '/games/mk-psp.jpg' },

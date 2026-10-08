@@ -44,7 +44,7 @@ export const PROJECTS_PROFILES: Record<string, ProjectProfile> = {
       'PostgreSQL',
     ],
     bannerImage: '/logos/atheno.png',
-    repoUrl: 'https://github.com/Angat-Shah/atheno',
+    repoUrl: 'https://github.com/Angat-Shah/ATHENO',
     role: 'ML & Full-Stack Engineer',
     timeline: '2026',
     status: 'In Development',
@@ -320,5 +320,3 @@ export const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({ projectId 
   );
 };
 
-
-// Author remaining 4 briefings: StackIt, ChronoSched, STAFFI, STUDIO
