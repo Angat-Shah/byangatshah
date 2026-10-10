@@ -29,21 +29,82 @@ export const Window: React.FC<WindowProps> = ({
   const dragOffsetRef = useRef<{ dx: number; dy: number } | null>(null);
   const [hasAnimatedIn, setHasAnimatedIn] = useState(false);
 
+  // Mobile swipe-to-dismiss states
+  const [dragY, setDragY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const touchStartYRef = useRef<number | null>(null);
+
+  const handleMobileClose = () => {
+    if (isClosing) return;
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 260);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartYRef.current = e.touches[0].clientY;
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartYRef.current === null) return;
+    const dy = e.touches[0].clientY - touchStartYRef.current;
+    if (dy > 0) {
+      setDragY(dy);
+    } else {
+      setDragY(0);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    touchStartYRef.current = null;
+    setIsDragging(false);
+    if (dragY > 80) {
+      handleMobileClose();
+    } else {
+      setDragY(0);
+    }
+  };
+
   if (isMobile) {
+    const sheetAnimClass = isClosing ? 'sheet-out' : 'sheet-in';
     return (
       <div
-        className="sheet-in glass-window fixed inset-x-0 bottom-0 top-3 z-40 flex flex-col rounded-t-2xl ring-1 ring-white/15"
-        style={{ zIndex: 100 + win.z }}
+        className={`${sheetAnimClass} glass-window fixed inset-x-0 bottom-0 top-3 z-40 flex flex-col rounded-t-2xl ring-1 ring-white/15`}
+        style={{
+          zIndex: 100 + win.z,
+          transform: dragY > 0 && !isClosing ? `translateY(${dragY}px)` : undefined,
+          transition: isDragging ? 'none' : 'transform 0.25s cubic-bezier(.16, 1, .3, 1), opacity 0.25s ease',
+          opacity: dragY > 0 && !isClosing ? Math.max(0.3, 1 - dragY / 320) : undefined,
+        }}
         onPointerDown={onFocus}
       >
-        <WindowTitleBar
-          app={app}
-          focused={true}
-          onClose={onClose}
-          onMinimize={onMinimize}
-          onToggleMax={onToggleMax}
-          mobile={true}
-        />
+        {/* Swipe down handle */}
+        <div
+          className="flex w-full cursor-grab touch-none flex-col items-center pb-1 active:cursor-grabbing"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <span className="h-1.5 w-10 rounded-full bg-white/25 transition-colors" />
+        </div>
+
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <WindowTitleBar
+            app={app}
+            focused={true}
+            onClose={handleMobileClose}
+            onMinimize={handleMobileClose}
+            onToggleMax={onToggleMax}
+            mobile={true}
+          />
+        </div>
         <div className="win-scroll selectable flex-1 overflow-y-auto overscroll-contain">
           {app.content}
         </div>
