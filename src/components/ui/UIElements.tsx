@@ -9,7 +9,13 @@ export const IconSquircleImage: React.FC<{
     <div
       className={`relative overflow-hidden rounded-[23%] shadow-[0_10px_22px_-6px_rgba(0,0,0,0.55)] ring-1 ring-white/10 ${className}`}
     >
-      <img src={src} alt="" draggable={false} className="h-full w-full object-cover" />
+      <img
+        src={src}
+        alt=""
+        draggable={false}
+        onContextMenu={(e) => e.preventDefault()}
+        className="h-full w-full object-cover pointer-events-none select-none no-save-image"
+      />
       {children}
     </div>
   );
