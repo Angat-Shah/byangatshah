@@ -103,6 +103,14 @@ export const PolaroidGallery: React.FC<PolaroidGalleryProps> = ({
     setSelected(photos[nextIdx]);
   };
 
+  // Pre-cache full resolution photos in the background for instant lightbox transitions
+  useEffect(() => {
+    photos.forEach((photo) => {
+      const img = new Image();
+      img.src = photo.src;
+    });
+  }, [photos]);
+
   useEffect(() => {
     if (!selected) return;
     const previousOverflow = document.body.style.overflow;

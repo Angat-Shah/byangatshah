@@ -6,7 +6,7 @@
 
 Software, machine learning, technical studies, and the occasional idea that refuses to stay an idea.
 
-[Email me](mailto:angatshah1411@gmail.com) · [Connect on LinkedIn](https://www.linkedin.com/in/angat-shah) · [Explore my repositories](https://github.com/Angat-Shah?tab=repositories)
+[Email me](mailto:angatshah1411@gmail.com) · [Connect on LinkedIn](https://www.linkedin.com/in/angat-shah) · [View My Resume](public/AngatShah_Resume.pdf)
 
 </div>
 
@@ -20,7 +20,7 @@ I’m Angat, and I studied Computer Science and Engineering at AMTICS, UTU, in G
 
 ## The Desktop Worth Exploring
 
-<!-- PLACEHOLDER: compressed GIF or video preview of the portfolio  -->
+https://github.com/user-attachments/assets/8049806a-fdbc-46ed-a25d-fab60d077bf8
 
 I built my portfolio as a small desktop environment rather than a conventional scrolling page. It features openable windows, study archives, research logs, a lightweight media player, and a view into the person behind the code.
 

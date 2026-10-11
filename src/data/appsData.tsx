@@ -89,7 +89,7 @@ export const ResearchView: React.FC<ResearchViewProps> = ({ onOpenProject: _onOp
 
           {/* Study Areas */}
           <div className="mt-1 flex flex-wrap gap-1.5">
-            {['Machine Learning', 'Explainability', 'TreeSHAP'].map((t) => (
+            {['Machine Learning', 'Explainability', 'SHAP'].map((t) => (
               <span key={t} className="tech-pill">
                 {t}
               </span>
@@ -110,12 +110,12 @@ export const ResearchView: React.FC<ResearchViewProps> = ({ onOpenProject: _onOp
           </div>
 
           <p className="mt-4 text-[0.95rem] leading-relaxed text-white/70">
-            Atheno explores used-vehicle resale valuation with machine learning, combining an XGBoost prediction model with SHAP-based explanations. The system uses vehicle attributes to estimate resale value and examines which factors contribute most to each prediction, connecting a numerical estimate with an interpretable explanation. The work sits at the intersection of applied machine learning, prediction, and explainability.
+            Atheno explores used-vehicle resale valuation through machine learning and explainability. The valuation pipeline estimates resale value from vehicle attributes, while SHAP-based feature attribution helps examine which factors contribute to an individual prediction. The work sits at the intersection of applied machine learning, prediction, and explainability.
           </p>
 
           {/* Action Buttons */}
           <div className="mt-5 flex flex-wrap items-center gap-4">
-            <ActionButton href="https://github.com/Angat-Shah/ATHENO">
+            <ActionButton href="https://github.com/Angat-Shah/ATHENO/blob/main/docs/TECHNICAL_REPORT.md">
               View Study
             </ActionButton>
             <ActionButton href="https://github.com/Angat-Shah/ATHENO">
@@ -557,6 +557,13 @@ const renderDescWithFigures = (desc: string) =>
   );
 
 export const CommunityView: React.FC = () => {
+  React.useEffect(() => {
+    COMMUNITY_ITEMS.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+    });
+  }, []);
+
   return (
     <ContentContainer>
       <SectionHeader eyebrow="Distinctions & Leadership" title="Built Beyond the Classroom">
