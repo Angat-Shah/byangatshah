@@ -1,25 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { ContentContainer, Eyebrow, ActionButton } from '../ui/UIElements';
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 export const ResumeView: React.FC = () => {
-  const [numPages, setNumPages] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(() => {
+    if (typeof window !== 'undefined') {
+      return Math.min(window.innerWidth - 48, 750);
+    }
+    return 750;
+  });
+  const [isPageLoaded, setIsPageLoaded] = useState<boolean>(false);
+  const [downloading, setDownloading] = useState<boolean>(false);
 
-  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
-    setNumPages(numPages);
-  }
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const w = containerRef.current.clientWidth;
+        setContainerWidth(Math.min(w, 750));
+      }
+    };
+    updateWidth();
+    const observer = new ResizeObserver(updateWidth);
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleDownload = async () => {
+    try {
+      setDownloading(true);
+      const response = await fetch('/AngatShah_Resume.pdf');
+      const blob = await response.blob();
+      // Using application/octet-stream ensures iOS Safari & mobile browsers do not treat
+      // the file as an inline preview tab, routing it to the system download prompt
+      const octetBlob = new Blob([blob], { type: 'application/octet-stream' });
+      const blobUrl = window.URL.createObjectURL(octetBlob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'AngatShah_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => {
+        window.URL.revokeObjectURL(blobUrl);
+        setDownloading(false);
+      }, 800);
+    } catch {
+      window.location.href = '/download-resume';
+      setDownloading(false);
+    }
+  };
 
   return (
     <ContentContainer>
-      {/* Ensure parent modal allows scrolling if it overflows */}
-      <div className="stagger flex flex-col w-full pb-16">
+      <div className="flex flex-col w-full pb-16">
         <Eyebrow>Curriculum Vitae</Eyebrow>
         <h1 className="font-display mt-3 text-[2rem] font-normal leading-[1.05] tracking-tight text-white sm:text-[2.5rem]">
           Angat Shah
@@ -29,42 +68,48 @@ export const ResumeView: React.FC = () => {
         </p>
 
         <div className="mt-5 flex flex-wrap items-center gap-3">
-          <ActionButton href="/resume.pdf">
+          <ActionButton href="/AngatShah_Resume.pdf">
             Open PDF
           </ActionButton>
-          <ActionButton href="/resume.pdf" download="Angat_Shah_Resume.pdf">
-            Download PDF
+          <ActionButton
+            href="/download-resume"
+            download="AngatShah_Resume.pdf"
+            onClick={handleDownload}
+          >
+            {downloading ? 'Downloading...' : 'Download PDF'}
           </ActionButton>
         </div>
 
         <div className="mt-7 w-full border-t border-white/10" />
 
-        {/* Paper Document Container */}
-        <div className="mt-8 flex w-full justify-center">
-          <Document
-            file="/resume.pdf"
-            onLoadSuccess={onDocumentLoadSuccess}
-            loading={
-              <div className="py-20 text-center font-mono text-sm text-white/40">
-                Loading Document...
+        {/* Paper Document Container with zero layout shifts */}
+        <div className="mt-8 flex w-full justify-center" ref={containerRef}>
+          <div className="relative w-full max-w-[750px] aspect-[1/1.414] bg-white rounded-md shadow-2xl shadow-black/80 overflow-hidden border border-neutral-300">
+            {/* Stable loading spinner inside the white paper */}
+            {!isPageLoaded && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white z-0">
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-800" />
+                <p className="font-mono text-xs tracking-wider text-neutral-500">Loading document...</p>
               </div>
-            }
-            className="flex flex-col items-center gap-8 w-full"
-          >
-            {Array.from(new Array(numPages), (_, index) => (
-              <div
-                key={`page_${index + 1}`}
-                className="overflow-hidden rounded-md border border-neutral-700/40 shadow-2xl shadow-black/80 transition-transform duration-300"
-              >
+            )}
+
+            <Document
+              file="/AngatShah_Resume.pdf"
+              loading={null}
+              className="w-full flex justify-center"
+            >
+              <div className={`w-full flex justify-center transition-opacity duration-200 ${isPageLoaded ? 'opacity-100' : 'opacity-0'}`}>
                 <Page
-                  pageNumber={index + 1}
+                  pageNumber={1}
+                  width={containerWidth}
                   renderAnnotationLayer={true}
                   renderTextLayer={true}
-                  width={Math.min(window.innerWidth * 0.85, 750)}
+                  loading={null}
+                  onRenderSuccess={() => setIsPageLoaded(true)}
                 />
               </div>
-            ))}
-          </Document>
+            </Document>
+          </div>
         </div>
       </div>
     </ContentContainer>

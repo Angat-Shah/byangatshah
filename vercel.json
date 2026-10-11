@@ -1,8 +1,22 @@
 {
   "rewrites": [
+    { "source": "/download-resume", "destination": "/AngatShah_Resume.pdf" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
+    {
+      "source": "/download-resume",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"AngatShah_Resume.pdf\""
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        }
+      ]
+    },
     {
       "source": "/assets/(.*)",
       "headers": [

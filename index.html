@@ -64,6 +64,10 @@
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Permanent+Marker&display=swap" />
     </noscript>
+
+    <!-- PDF Viewer Preloads for Fast Resume Display -->
+    <link rel="preload" href="/pdf.worker.min.mjs" as="fetch" crossorigin="anonymous" />
+    <link rel="preload" href="/AngatShah_Resume.pdf" as="fetch" crossorigin="anonymous" />
   </head>
   <body class="h-full overflow-hidden bg-black font-sans text-white">
     <div id="root" class="h-full w-full"></div>
