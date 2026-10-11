@@ -15,7 +15,7 @@ export const TRACKS: Track[] = [
     id: 'midnight-geometry',
     title: 'Midnight Geometry',
     artist: 'Angat Shah',
-    artwork: '/audio/midnight-geometry-artwork.jpg',
+    artwork: '/audio/midnight-geometry-artwork.webp',
     src: '/audio/midnight-geometry.mp3',
     colour: '#181A20',
     wip: false,
@@ -63,18 +63,24 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-    } else {
+    if (audio.paused) {
+      if (!audio.src || !audio.src.includes(currentTrack.src)) {
+        audio.src = currentTrack.src;
+      }
       const playPromise = audio.play();
       if (playPromise !== undefined) {
         playPromise
           .then(() => setIsPlaying(true))
-          .catch((err) => console.warn('Playback prevented:', err));
+          .catch((err) => {
+            console.warn('Playback prevented:', err);
+            setIsPlaying(false);
+          });
       }
+    } else {
+      audio.pause();
+      setIsPlaying(false);
     }
-  }, [isPlaying]);
+  }, [currentTrack.src]);
 
   const selectTrack = useCallback((index: number) => {
     const validIdx = (index + TRACKS.length) % TRACKS.length;
@@ -105,13 +111,10 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (!audio.src) {
-      audio.src = currentTrack.src;
-      audio.load();
-    }
-
     const onTimeUpdate = () => setCurrentTime(audio.currentTime);
     const onLoadedMetadata = () => setDuration(audio.duration || 0);
+    const onAudioPlay = () => setIsPlaying(true);
+    const onAudioPause = () => setIsPlaying(false);
     const onEnded = () => {
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
@@ -123,11 +126,17 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
     audio.addEventListener('timeupdate', onTimeUpdate);
     audio.addEventListener('loadedmetadata', onLoadedMetadata);
+    audio.addEventListener('play', onAudioPlay);
+    audio.addEventListener('pause', onAudioPause);
+    audio.addEventListener('playing', onAudioPlay);
     audio.addEventListener('ended', onEnded);
 
     return () => {
       audio.removeEventListener('timeupdate', onTimeUpdate);
       audio.removeEventListener('loadedmetadata', onLoadedMetadata);
+      audio.removeEventListener('play', onAudioPlay);
+      audio.removeEventListener('pause', onAudioPause);
+      audio.removeEventListener('playing', onAudioPlay);
       audio.removeEventListener('ended', onEnded);
     };
   }, [currentTrack.src]);

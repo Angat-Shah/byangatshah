@@ -347,6 +347,8 @@ function GamePosterCard({
           <img
             src={game.cover}
             alt={game.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover select-none pointer-events-none"
             draggable={false}
           />

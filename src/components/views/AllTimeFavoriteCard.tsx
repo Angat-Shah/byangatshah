@@ -33,7 +33,7 @@ export const GameIdentity: React.FC<{ className?: string }> = ({ className = '' 
     <div className={`spider-card__block-game ${className}`}>
       <div className="spider-card__app-icon">
         <img
-          src="/games/bgmi.jpg"
+          src="/games/bgmi.webp"
           alt="BGMI App"
           className="spider-card__app-icon-img"
           draggable={false}
@@ -61,7 +61,7 @@ export const PlayerIdentity: React.FC<{
         <picture>
           <source srcSet="/games/spider-rank-avatar.webp" type="image/webp" />
           <img
-            src="/games/spider-rank-avatar.png"
+            src="/games/spider-rank-avatar.webp"
             alt="Spider Avatar"
             className="spider-card__avatar-img"
             draggable={false}
@@ -404,7 +404,7 @@ export const SquadUpModal: React.FC<SquadUpModalProps> = ({ isOpen, onClose }) =
               <picture>
                 <source srcSet="/games/spider-rank-avatar.webp" type="image/webp" />
                 <img
-                  src="/games/spider-rank-avatar.png"
+                  src="/games/spider-rank-avatar.webp"
                   alt="SPIDER"
                   className="squad-modal-profile-img"
                 />
@@ -594,7 +594,7 @@ export const AllTimeFavoriteCard: React.FC<AllTimeFavoriteCardProps> = ({
           <picture>
             <source srcSet="/games/bgmi-soldier-bg.webp" type="image/webp" />
             <img
-              src="/games/bgmi-soldier-bg.jpg"
+              src="/games/bgmi-soldier-bg.webp"
               alt=""
               className="spider-card__soldier-img"
               draggable={false}

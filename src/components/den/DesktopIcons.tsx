@@ -75,23 +75,23 @@ const MOBILE_APP_IDS: AppId[] = ['research', 'notesncode', 'skills', 'gallery'];
 const MOBILE_SOCIAL_LINKS = [
   {
     label: 'Resume',
-    href: '/resume.pdf',
-    iconSrc: '/logos/resume-mac.png',
+    href: '/AngatShah_Resume.pdf',
+    iconSrc: '/logos/resume-mac.webp',
   },
   {
     label: 'GitHub',
     href: 'https://github.com/Angat-Shah',
-    iconSrc: '/logos/github-mac.png',
+    iconSrc: '/logos/github-mac.webp',
   },
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/angat-shah',
-    iconSrc: '/logos/linkedin-mac.png',
+    iconSrc: '/logos/linkedin-mac.webp',
   },
   {
     label: 'Monkeytype',
     href: 'https://monkeytype.com/profile/xSPIDERx',
-    iconSrc: '/logos/monkeytype-mac.png',
+    iconSrc: '/logos/monkeytype-mac.webp',
   },
 ];
 

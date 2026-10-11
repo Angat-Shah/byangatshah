@@ -3,7 +3,7 @@ import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import { Button } from './button';
 import { cn } from '../../lib/utils';
 
-const artworkFallback = '/audio/midnight-geometry-artwork.jpg';
+const artworkFallback = '/audio/midnight-geometry-artwork.webp';
 
 export type NowPlayingBarProps = Readonly<
   {
@@ -145,7 +145,13 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
           onClick={handleArtworkClick}
           title={expanded ? (onClose ? 'Click to collapse player' : undefined) : undefined}
         >
-          <img src={artwork || artworkFallback} alt={title} draggable={false} />
+          <img
+            src={artwork || artworkFallback}
+            alt={title}
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            className="pointer-events-none select-none no-save-image"
+          />
 
           {/* Equalizer bars (visible in collapsed state when playing) */}
           <span

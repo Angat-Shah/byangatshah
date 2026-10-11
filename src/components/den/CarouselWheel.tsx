@@ -11,31 +11,31 @@ export const FEATURED_PROJECTS: FeaturedProject[] = [
   {
     id: 'atheno',
     title: 'AI Automotive Intelligence',
-    image: '/logos/atheno.png',
+    image: '/logos/atheno.webp',
     url: 'https://github.com/Angat-Shah/ATHENO',
   },
   {
     id: 'kavach',
     title: 'Citizen Safety & Incident Response',
-    image: '/logos/kavach.png',
+    image: '/logos/kavach.webp',
     url: 'https://github.com/Angat-Shah/KAVACH',
   },
   {
     id: 'qrng',
     title: 'Quantum Randomness & Validation',
-    image: '/logos/qrng.png',
+    image: '/logos/qrng.webp',
     url: 'https://github.com/Angat-Shah/QRNG',
   },
   {
     id: 'ciphera',
     title: 'AI-Assisted Secure Code Analysis',
-    image: '/logos/ciphera.png',
+    image: '/logos/ciphera.webp',
     url: 'https://github.com/Angat-Shah/Ciphera',
   },
   {
     id: 'stackit',
     title: 'Developer Knowledge Platform',
-    image: '/logos/stackit.png',
+    image: '/logos/stackit.webp',
     url: 'https://github.com/Angat-Shah/StackIt',
   },
 ];

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import type { AppDefinition } from '../types/os';
 import {
   ContentContainer,
@@ -12,6 +12,7 @@ import {
 import { PolaroidGallery, PolaroidSingle } from '../components/views/PolaroidGallery';
 import { MacSkillsFolder } from '../components/views/MacSkillsFolder';
 import { GamingArchive } from '../components/views/GamingArchive';
+import { ResumeView } from '../components/views/ResumeView';
 
 const BIO_STATS = [
   { value: '10+', label: 'Projects Built' },
@@ -77,11 +78,11 @@ export const ResearchView: React.FC<ResearchViewProps> = ({ onOpenProject: _onOp
             APPLIED ML STUDY
           </div>
 
-          <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
-            <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+          <div className="mt-3 flex items-start justify-between gap-3 sm:items-baseline">
+            <h2 className="min-w-0 flex-1 text-xl font-semibold tracking-tight text-white sm:text-2xl">
               Atheno
             </h2>
-            <span className="rounded bg-clay/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-clay-soft">
+            <span className="shrink-0 flex-none whitespace-nowrap rounded bg-clay/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-clay-soft">
               2026
             </span>
           </div>
@@ -129,11 +130,11 @@ export const ResearchView: React.FC<ResearchViewProps> = ({ onOpenProject: _onOp
             INDEPENDENT STUDY
           </div>
 
-          <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
-            <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+          <div className="mt-3 flex items-start justify-between gap-3 sm:items-baseline">
+            <h2 className="min-w-0 flex-1 text-xl font-semibold tracking-tight text-white sm:text-2xl">
               Agreement Without Faithfulness
             </h2>
-            <span className="rounded bg-clay/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-clay-soft">
+            <span className="shrink-0 flex-none whitespace-nowrap rounded bg-clay/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-clay-soft">
               2025 – 2026
             </span>
           </div>
@@ -181,11 +182,11 @@ export const ResearchView: React.FC<ResearchViewProps> = ({ onOpenProject: _onOp
             TECHNICAL STUDY
           </div>
 
-          <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3">
-            <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+          <div className="mt-3 flex items-start justify-between gap-3 sm:items-baseline">
+            <h2 className="min-w-0 flex-1 text-xl font-semibold tracking-tight text-white sm:text-2xl">
               Quantum Random Number Generator
             </h2>
-            <span className="rounded bg-clay/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-clay-soft">
+            <span className="shrink-0 flex-none whitespace-nowrap rounded bg-clay/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-clay-soft">
               2025
             </span>
           </div>
@@ -243,21 +244,6 @@ export const NotesNCodeView: React.FC = () => {
     <ContentContainer>
       <div className="flex flex-wrap gap-x-8 gap-y-7">
         <div className="stagger min-w-[280px] flex-1">
-          {/* Small notesNcode logo at the start
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-9 w-9 overflow-hidden rounded-xl bg-black/40 p-1.5 ring-1 ring-white/20">
-              <img
-                src="/logos/notesncode-mac.png"
-                alt="notesNcode"
-                className="h-full w-full object-contain"
-                draggable={false}
-              />
-            </div>
-            <span className="font-mono text-xs uppercase tracking-wider text-white/50">
-              Academic Repository
-            </span>
-          </div> */}
-
           <Eyebrow>Coursework & Knowledge Hub</Eyebrow>
           <h1 className="font-display mt-3 text-[2rem] font-normal leading-[1.05] tracking-tight text-white sm:text-[2.5rem]">
             notesNcode
@@ -312,21 +298,6 @@ export const EikoneView: React.FC = () => {
     <ContentContainer>
       <div className="flex flex-wrap gap-x-8 gap-y-7">
         <div className="stagger min-w-[280px] flex-1">
-          {/* Small notesNcode logo at the start
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-9 w-9 overflow-hidden rounded-xl bg-black/40 p-1.5 ring-1 ring-white/20">
-              <img
-                src="/logos/eikone-mac.png"
-                alt="notesNcode"
-                className="h-full w-full object-contain"
-                draggable={false}
-              />
-            </div>
-            <span className="font-mono text-xs uppercase tracking-wider text-white/50">
-              Photography & Visual Stories
-            </span>
-          </div> */}
-
           <Eyebrow>Visual Storytelling Platform</Eyebrow>
           <h1 className="font-display mt-3 text-[2rem] font-normal leading-[1.05] tracking-tight text-white sm:text-[2.5rem]">
             Eikone
@@ -527,7 +498,7 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     title: 'AMAZON ML SUMMER SCHOOL',
     subtitle: 'Machine Learning Program · Amazon India',
     year: 'Aug 2025',
-    image: '/media/amazon-ml-summer-school.png',
+    image: '/media/amazon-ml-summer-school.webp',
     isVertical: true,
     desc: 'Selected through a competitive national process for Amazon India’s Machine Learning Summer School, covering modern ML, deep learning, generative AI, LLMs, and causal inference.'
   },
@@ -537,7 +508,7 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     title: 'SSIP IDEA HUNT 2023',
     subtitle: 'Student Startup & Innovation Policy · Govt. of Gujarat',
     year: 'Oct 2023',
-    image: '/media/idea-hunt.png',
+    image: '/media/idea-hunt.webp',
     desc: 'Developed and pitched an electro-hydrodynamic laptop cooling concept with a five-member team, securing ₹30,000 in funding to support future prototype development.'
   },
 
@@ -546,7 +517,7 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     title: 'SWIRL & TWIRL MICRO-VENTURE',
     subtitle: 'Live Venture · University Festival',
     year: 'Feb – Mar 2025',
-    image: '/media/swirl-twirl-menu.png',
+    image: '/media/swirl-twirl-menu.webp',
     isVertical: true,
     desc: 'Operated a four-day food stall at UTU’s university-wide 9th Uth Festival, competing alongside 19+ departments and generating ₹56,850 in sales while managing procurement, pricing, inventory, marketing, and live operations.'
   },
@@ -556,7 +527,7 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     title: 'NSS CORE LEADERSHIP',
     subtitle: 'Leadership · National Service Scheme',
     year: 'Jun 2023 – Jun 2025',
-    image: '/media/nss-certificate.png',
+    image: '/media/nss-certificate.webp',
     desc: 'Served two consecutive years on the NSS departmental core team, coordinating activities and a 180–200 member volunteer unit across health drives, competitions, and community programs.'
   },
 
@@ -565,7 +536,7 @@ export const COMMUNITY_ITEMS: CommunityItem[] = [
     title: 'PRAVAAH FUNZONE · TREASURE HUNT',
     subtitle: 'Event Leadership · Engineer’s Day',
     year: 'Sep 2023',
-    image: '/media/pravaah-2023.png',
+    image: '/media/pravaah-2023.webp',
     desc: 'Led the design and execution of a multi-stage departmental technical challenge, coordinating participants, 10 QR-based clues, physical navigation, and a custom C programming puzzle.'
   },
 ];
@@ -641,7 +612,7 @@ export const PROJECTS_LIST = [
     name: 'Atheno',
     subtitle: 'AI Automotive Intelligence',
     tech: 'Python · XGBoost · SHAP · Streamlit',
-    image: '/logos/atheno.png',
+    image: '/logos/atheno.webp',
     url: 'https://github.com/Angat-Shah/ATHENO',
   },
   {
@@ -649,7 +620,7 @@ export const PROJECTS_LIST = [
     name: 'KAVACH',
     subtitle: 'Citizen Safety & Incident Response',
     tech: 'Dart · Flutter · Firebase · Geospatial',
-    image: '/logos/kavach.png',
+    image: '/logos/kavach.webp',
     url: 'https://github.com/Angat-Shah/KAVACH',
   },
   {
@@ -657,7 +628,7 @@ export const PROJECTS_LIST = [
     name: 'Ciphera',
     subtitle: 'AI-Assisted Secure Code Analysis',
     tech: 'TypeScript · AST · Security · OWASP',
-    image: '/logos/ciphera.png',
+    image: '/logos/ciphera.webp',
     url: 'https://github.com/Angat-Shah/Ciphera',
   },
   {
@@ -665,7 +636,7 @@ export const PROJECTS_LIST = [
     name: 'QRNG',
     subtitle: 'Quantum Randomness & Validation',
     tech: 'Quantum · C++ · Algorithms · Cryptography',
-    image: '/logos/qrng.png',
+    image: '/logos/qrng.webp',
     url: 'https://github.com/Angat-Shah/QRNG',
   },
   {
@@ -673,7 +644,7 @@ export const PROJECTS_LIST = [
     name: 'StackIt',
     subtitle: 'Developer Knowledge Platform',
     tech: 'React · TypeScript · Tailwind · REST',
-    image: '/logos/stackit.png',
+    image: '/logos/stackit.webp',
     url: 'https://github.com/Angat-Shah/StackIt',
   },
   {
@@ -681,7 +652,7 @@ export const PROJECTS_LIST = [
     name: 'ChronoSched',
     subtitle: 'CPU Process Scheduling Simulator',
     tech: 'C++ · OS Algorithms · Visualization',
-    image: '/logos/chronosched.png',
+    image: '/logos/chronosched.webp',
     url: 'https://github.com/Angat-Shah/ChronoSched',
   },
   {
@@ -689,7 +660,7 @@ export const PROJECTS_LIST = [
     name: 'STAFFI',
     subtitle: 'Web3 Workforce Management Platform',
     tech: 'TypeScript · Web3 · Smart Contracts · Analytics',
-    image: '/logos/staffi.png',
+    image: '/logos/staffi.webp',
     url: 'https://github.com/Angat-Shah/STAFFI',
   },
   {
@@ -697,7 +668,7 @@ export const PROJECTS_LIST = [
     name: 'STUDIO',
     subtitle: 'Forensic Secure Video Player',
     tech: 'Dart · Flutter · Video Security · DRM',
-    image: '/logos/studio.png',
+    image: '/logos/studio.webp',
     url: 'https://github.com/Angat-Shah/STUDIO',
   },
 ];
@@ -790,26 +761,14 @@ const ContactView: React.FC = () => {
   );
 };
 
-const LazyResumeView = lazy(() => import('../components/views/ResumeView'));
-
-export const ResumeView: React.FC = () => (
-  <Suspense
-    fallback={
-      <div className="flex h-full min-h-[400px] w-full items-center justify-center font-mono text-sm text-white/40">
-        Loading Document...
-      </div>
-    }
-  >
-    <LazyResumeView />
-  </Suspense>
-);
+export { ResumeView };
 
 export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinition[] => [
   // Resume App
   {
     id: 'resume',
     label: 'Resume',
-    iconSrc: '/logos/resume-mac.png',
+    iconSrc: '/logos/resume-mac.webp',
     gradient: 'linear-gradient(145deg,#23252c,#111215)',
     size: { w: 840, h: 720 },
     content: <ResumeView />,
@@ -824,7 +783,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
       </span>
     ),
     gradient: 'linear-gradient(145deg,#3a3f4b,#16181d)',
-    iconSrc: '/angat-shah-icon.png',
+    iconSrc: '/angat-shah-icon.webp',
     size: { w: 720, h: 620 },
     content: (
       <ContentContainer>
@@ -833,7 +792,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
             <picture>
               <source srcSet="/media/angat-portrait.webp" type="image/webp" />
               <img
-                src="/media/angat-portrait.png"
+                src="/media/angat-portrait.webp"
                 alt="Angat Shah"
                 className="aspect-[4/5] w-full object-cover"
                 draggable={false}
@@ -842,7 +801,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
           </div>
           <div>
             <img
-              src="/angat-shah-icon.png"
+              src="/angat-shah-icon.webp"
               alt="Angat Shah Icon"
               className="mb-4 h-11 w-11 rounded-[24%] ring-1 ring-white/10"
               draggable={false}
@@ -912,7 +871,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'experience',
     label: 'Experience',
-    iconSrc: '/logos/experience-mac.png',
+    iconSrc: '/logos/experience-mac.webp',
     gradient: 'linear-gradient(145deg,#23262d,#121417)',
     size: { w: 700, h: 640 },
     content: <ExperienceView />,
@@ -922,7 +881,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'community',
     label: 'Community',
-    iconSrc: '/logos/community-mac.png',
+    iconSrc: '/logos/community-mac.webp',
     gradient: 'linear-gradient(145deg,#27242a,#141217)',
     size: { w: 700, h: 640 },
     content: <CommunityView />,
@@ -942,7 +901,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'research',
     label: 'Studies',
-    iconSrc: '/logos/research-mac.png',
+    iconSrc: '/logos/research-mac.webp',
     gradient: 'linear-gradient(145deg,#222530,#11131a)',
     size: { w: 760, h: 650 },
     content: <ResearchView onOpenProject={onOpenProject} />,
@@ -952,7 +911,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'notesncode',
     label: 'notesNcode',
-    iconSrc: '/logos/notesncode-mac.png',
+    iconSrc: '/logos/notesncode-mac.webp',
     gradient: 'linear-gradient(145deg,#222328,#121316)',
     size: { w: 700, h: 620 },
     content: <NotesNCodeView />,
@@ -962,7 +921,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'skills',
     label: 'Skills',
-    iconSrc: '/logos/skills-mac.png',
+    iconSrc: '/logos/skills-mac.webp',
     gradient: 'linear-gradient(145deg,#222226,#101012)',
     size: { w: 680, h: 600 },
     content: <SkillsView />,
@@ -972,7 +931,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'gallery',
     label: 'Eikone',
-    iconSrc: '/logos/eikone-mac.png',
+    iconSrc: '/logos/eikone-mac.webp',
     gradient: 'linear-gradient(145deg,#202126,#101114)',
     size: { w: 720, h: 640 },
     content: <EikoneView />,
@@ -980,7 +939,7 @@ export const createAppsData = (onOpenProject?: (id: string) => void): AppDefinit
   {
     id: 'eikone',
     label: 'Eikone',
-    iconSrc: '/logos/eikone-mac.png',
+    iconSrc: '/logos/eikone-mac.webp',
     gradient: 'linear-gradient(145deg,#202126,#101114)',
     size: { w: 720, h: 640 },
     content: <EikoneView />,

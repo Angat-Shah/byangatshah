@@ -6,6 +6,7 @@ export interface PolaroidPhoto {
   title: string;
   caption?: string;
   src: string;
+  thumbSrc?: string;
 }
 
 export const EIKONE_POLAROIDS: PolaroidPhoto[] = [
@@ -13,55 +14,64 @@ export const EIKONE_POLAROIDS: PolaroidPhoto[] = [
     id: '01',
     title: 'Victoria Falls',
     caption: 'Standing where the Zambezi falls into thin air.',
-    src: '/eikone/photo-01.jpg',
+    src: '/eikone/photo-01.webp',
+    thumbSrc: '/eikone/photo-01-thumb.webp',
   },
   {
     id: '02',
     title: 'Departure',
     caption: 'Cutting through cloud over Shanghai roofs.',
-    src: '/eikone/photo-02.jpg',
+    src: '/eikone/photo-02.webp',
+    thumbSrc: '/eikone/photo-02-thumb.webp',
   },
   {
     id: '03',
     title: 'Dusk on Zambezi',
     caption: 'Three fishermen drifting into evening light.',
-    src: '/eikone/photo-03.jpg',
+    src: '/eikone/photo-03.webp',
+    thumbSrc: '/eikone/photo-03-thumb.webp',
   },
   {
     id: '04',
     title: 'Rising Mist',
     caption: 'Dwarfed by spray at the canyon rim.',
-    src: '/eikone/photo-04.jpg',
+    src: '/eikone/photo-04.webp',
+    thumbSrc: '/eikone/photo-04-thumb.webp',
   },
   {
     id: '05',
     title: 'Savannah Rest',
     caption: 'Two young lions resting in midday shade.',
-    src: '/eikone/photo-05.jpg',
+    src: '/eikone/photo-05.webp',
+    thumbSrc: '/eikone/photo-05-thumb.webp',
   },
   {
     id: '06',
     title: 'Dinner Under Glass',
     caption: 'Warm lamps and rain on the conservatory roof.',
-    src: '/eikone/photo-06.jpg',
+    src: '/eikone/photo-06.webp',
+    thumbSrc: '/eikone/photo-06-thumb.webp',
   },
   {
     id: '07',
     title: 'China Pavilion',
     caption: 'Crimson brackets above an empty track.',
-    src: '/eikone/photo-07.jpg',
+    src: '/eikone/photo-07.webp',
+    thumbSrc: '/eikone/photo-07-thumb.webp',
   },
   {
     id: '08',
     title: 'Midnight Water',
     caption: 'Unbroken silence under a starry sky.',
-    src: '/eikone/photo-08.jpg',
+    src: '/eikone/photo-08.webp',
+    thumbSrc: '/eikone/photo-08-thumb.webp',
   },
   {
     id: '09',
     title: 'City from Above',
     caption: 'Towers stretching to the river horizon.',
-    src: '/eikone/photo-09.jpg',
+    src: '/eikone/photo-09.webp',
+    thumbSrc: '/eikone/photo-09-thumb.webp',
   }
 ];
 
@@ -145,7 +155,7 @@ export const PolaroidGallery: React.FC<PolaroidGalleryProps> = ({
           >
             <span className="polaroid-image-container">
               <img
-                src={photo.src}
+                src={photo.thumbSrc || photo.src}
                 alt={photo.title}
                 width={1024}
                 height={1024}
@@ -335,7 +345,9 @@ export const PolaroidSingle: React.FC<{
           <img
             src={src}
             alt={title}
-            className="polaroid-img object-contain"
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            className="polaroid-img object-contain pointer-events-none select-none no-save-image"
           />
         </span>
         {showCaption && (
@@ -384,7 +396,9 @@ export const PolaroidSingle: React.FC<{
               <img
                 src={src}
                 alt={title}
-                className="object-contain"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
+                className="object-contain pointer-events-none select-none no-save-image"
                 style={{ borderRadius: showCaption ? '4px 4px 0 0' : '4px' }}
               />
               {showCaption && (
