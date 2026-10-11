@@ -14,6 +14,8 @@ import { ProjectDetailView, PROJECTS_PROFILES } from './components/views/Project
 import { playSound } from './utils/sounds';
 import { triggerHaptic } from './utils/haptics';
 import { PlayfulToast } from './components/den/PlayfulToast';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 export default function App() {
   const { startPlaying } = usePlayer();
@@ -345,6 +347,8 @@ export default function App() {
       )}
 
       {!isLocked && <PlayfulToast />}
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
